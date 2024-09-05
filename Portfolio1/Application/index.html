@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Side</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio side</h1>
+    </header>
+
+    <main class="content-grid">
+        <section class="projects-list">
+            <ul>
+                <li>
+                    <article class="project-card">
+                        <h2 class="card-title">Prosjekt 1</h2>
+                    </article>
+                </li>
+                <li>
+                    <article class="project-card">
+                        <h2 class="card-title">Tic tac toe spill</h2>
+                    </article>
+                </li>
+                <li>
+                    <article class="project-card">
+                        <h2 class="card-title">eksempel projekt</h2>
+                    </article>
+                </li>
+            </ul>
+        </section>
+        <section class="new-project">
+            <article class="project-card project-start">
+                <h2 class="card-title" style="background-color: #d15843;">Start et nytt prosjekt</h2>
+                <form action="">
+                    <label for="project-name">Prosjekt navn</label>
+                    <input type="text" id="project-name" name="project-name">
+                    
+                    <label for="project-description">Beskrivelse</label>
+                    <textarea name="project-description" id="project-description" rows="5"></textarea>
+                    
+                    <label for="github-url">Github URL</label>
+                    <input type="url" id="github-url" name="github-url">
+                    
+                    <label for="project-start-date">Start dato</label>
+                    <input type="date" id="project-start-date" name="project-start-date">
+                    
+                    <button type="submit">Start prosjekt</button>
+                </form>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

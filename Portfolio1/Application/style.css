@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #3d5159;
+  color: white;
+}
+
+header {
+  background-color: #8ba2a9;
+  padding: 20px;
+  text-align: left;
+}
+
+h1 {
+  margin: 0;
+  font-weight: normal;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.projects-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+
+.project-card {
+  background-color: #d4c5c7;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-title {
+  background-color: #8c6f6b;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  margin: 0;
+}
+
+.project-start {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-start form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-start label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #3d5159;
+}
+
+.project-start input,
+.project-start textarea {
+  padding: 8px;
+  border: 1px solid #8c6f6b;
+  border-radius: 5px;
+  background-color: #f0e9ea;
+  color: #3d5159;
+}
+
+.project-start button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #d15843;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.project-start button:hover {
+  background-color: #b94b3a;
+}
