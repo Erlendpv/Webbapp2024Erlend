@@ -1,0 +1,30 @@
+[
+  {
+    "id": 0,
+    "projectName": "Tic Tac Toe",
+    "description": "A simple game of Tic Tac Toe",
+    "githubURL": "github.com/erlendvikan/tic-tac-toe",
+    "date": "2024-09-03"
+  },
+  {
+    "createdAt": "2024-09-05T14:43:03.784Z",
+    "projectName": "test",
+    "projectDescription": "icle",
+    "projectUrl": "https://www.github.com/erlendpv",
+    "projectStartDate": "2024-09-06"
+  },
+  {
+    "createdAt": "2024-09-05T14:45:43.923Z",
+    "projectName": "test",
+    "projectDescription": "osteron",
+    "projectUrl": "https://www.github.com/erlendpv",
+    "projectStartDate": "2024-09-07"
+  },
+  {
+    "createdAt": "2024-09-05T14:49:05.895Z",
+    "projectName": "oknytest",
+    "projectDescription": "heiiiiiia",
+    "projectUrl": "https://www.github.com/erlendpv",
+    "projectStartDate": "2024-09-06"
+  }
+]
