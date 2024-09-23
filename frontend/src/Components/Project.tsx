@@ -2,17 +2,11 @@ export type ProjectProps = {
     id: string;
     title: string;
     description: string;
-}
-type Props = {
-    props: ProjectProps;
+    category?: string;
 }
 
-export default function Project({props}: Props){
-    const {id = "", title = "", description = ""} = props;  
+export default function Project({children}: {children: React.ReactNode}){
     return(
-        <article>
-            <h3>{title}</h3>
-            <p>{description}</p>
-        </article>
+        <article>{children}</article>
     )
 }

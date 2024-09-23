@@ -1,16 +1,5 @@
-import Experience from "./Experience";
-
-type ExperiencesProps = {
-    experienceOne: string;
-    experienceTwo: string;
-}
-
-export default function Experiences(props : ExperiencesProps){
-    const {experienceOne = "", experienceTwo = ""} = props;
+export default function Experiences({children}: {children: React.ReactNode}){
     return(
-        <div>
-            <Experience experience={experienceOne} />
-            <Experience experience={experienceTwo} />
-        </div>
+        <>{children}</>
     )
 }
