@@ -1,20 +1,24 @@
-import Empty from "./Empty";
-import Project, { ProjectProps } from "./Project";
+import Empty from "@/Components/Empty";
+import CreateProject from "./CreateProject";
+import useProject from "../hooks/useProject";
+import { FormateDate } from "../Helpers/FormatDate";
+import Project from "./Project";
 
 
-export default function Projects({projectList, deleteProject} : { projectList: ProjectProps[], deleteProject: Function}){
-    const projectsByCategory = projectList.reduce((totals, project) => {
-        const category = project.category || "Uncategorized";
-        totals[category] = (totals[category] || 0) + 1;
-        return totals;
-      }, {} as { [category: string]: number });
-    
+
+export default function Projects(){
+    const {projectList, updateProjectList, deleteProject, projectsByCategory} = useProject();
     return(
+        <>
+        <h2>Create project</h2>
+        <CreateProject updateProjectList={updateProjectList}/>
+        <h2>Current projects:</h2>
         <Empty data={(projectList)}>
             {projectList.map((p, index) => (
                     <Project key={index}>
                         <h2>{p.title}</h2>
                         <p>{p.description}</p>
+                        <p>{FormateDate(p.createdAt)}</p>
                         <p>Category: {p.category ? p.category : "no catagory exists"}</p>
                         <button type="button" onClick={() => deleteProject(p.id)}>Delete project</button>
                     </Project>
@@ -25,6 +29,7 @@ export default function Projects({projectList, deleteProject} : { projectList: P
         {Object.entries(projectsByCategory).map(([category, total]) => (<li key={category}>{category}: {total}</li>))}
       </ul>
         </Empty>
+        </>
     )
         
 }

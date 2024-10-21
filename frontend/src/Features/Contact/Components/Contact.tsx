@@ -32,7 +32,6 @@ export default function Contact(email : ContactProps){
             <h2>Contact me</h2>
             <button type="button" onClick={() => alert(email)}>Vis epost adresse</button>
             <form onSubmit={handleSubmit}>
-                <pre>{JSON.stringify({name, message})}</pre>
                 <label htmlFor="">Name</label>
                 <input type="text" id="name" required placeholder="your name" onChange={handleChange} value={name} />
                 <label htmlFor="message">Your message</label>

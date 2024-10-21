@@ -23,7 +23,6 @@ export default function CreateProject({updateProjectList}: {updateProjectList: F
 
     return(
         <form onSubmit={handleSubmit}>
-            <pre>{JSON.stringify({title, description})}</pre>
             <label htmlFor="title">Title</label>
             <input type="text" id="title" value={title} onChange={handleChange} />
             <label htmlFor="">Discription</label>
