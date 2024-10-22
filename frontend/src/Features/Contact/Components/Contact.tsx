@@ -28,7 +28,7 @@ export default function Contact(email : ContactProps){
     }
 
     return(
-        <div>
+        <div className="contact-form ">
             <h2>Contact me</h2>
             <button type="button" onClick={() => alert(email)}>Vis epost adresse</button>
             <form onSubmit={handleSubmit}>

@@ -1,6 +1,6 @@
 const student : any  = {
-    name: 'Halgeir Geirson',
-    degree: 'Bachelor IT',
+    name: 'Erlend Vikan',
+    degree: 'forhåpentligvis Bachelor IT',
     points: 180,
     experiences: [
       'Figma UI for customer X',
