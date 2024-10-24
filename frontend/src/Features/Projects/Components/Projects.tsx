@@ -7,11 +7,11 @@ import Project from "./Project";
 
 
 export default function Projects(){
-    const {projectList, updateProjectList, deleteProject, projectsByCategory} = useProject();
+    const {projectList, deleteProject, projectsByCategory} = useProject();
     return(
         <>
         <h2>Create project</h2>
-        <CreateProject updateProjectList={updateProjectList}/>
+        <CreateProject/>
         <h2>Current projects:</h2>
         <Empty data={(projectList)}>
             {projectList.map((p, index) => (
@@ -20,6 +20,9 @@ export default function Projects(){
                         <p>{p.description}</p>
                         <p>{FormateDate(p.createdAt)}</p>
                         <p>Category: {p.category ? p.category : "no catagory exists"}</p>
+                        <p>Status: {p.status}</p>
+                        <p>Tags: {p.tags.join(", ")}</p>
+                        <p>Public: {p.public ? "Yes" : "No"}</p>
                         <button type="button" onClick={() => deleteProject(p.id)}>Delete project</button>
                     </Project>
                     

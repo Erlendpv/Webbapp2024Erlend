@@ -1,6 +1,6 @@
-import { endpoints } from '@/Configs/urls';
+import { endpoints } from '@/configs/urls';
 import {ofetch} from 'ofetch';
 
-const fetch = ofetch(endpoints.projects);
+const fetchProject = ofetch(endpoints.projects);
 
-export default {fetch};
+export default {fetchProject};

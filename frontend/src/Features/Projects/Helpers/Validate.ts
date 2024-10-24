@@ -7,7 +7,10 @@ const projectSchema = z.object({
     title: z.string(),
     description: z.string(),
     createdAt: z.string().datetime(),
-    category: z.string().optional()
+    category: z.string().optional(),
+    status: z.string(),
+    public: z.boolean(),
+    tags: z.string().array()
 
 })
 const projectsSchema = z.array(projectSchema)

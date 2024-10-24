@@ -1,31 +1,23 @@
-import { useState } from "react";
+import UseForm from "../hooks/useForm";
 
-export default function CreateProject({updateProjectList}: {updateProjectList: Function}) {
-    const [title, setTitle] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
-        if(e.target.id === 'title'){
-            setTitle(e.target.value);
-        } else {
-            setDescription(e.target.value);
-        }
-    }
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if(!title || !description){
-            return;
-        }
-        updateProjectList({title: title, description: description});
-        setTitle("");
-        setDescription("");
-    }
+export default function CreateProject() {
+    const { title, description, handleChange, handleSubmit, handlePublic, handleTags, handleCategory, handleStatus, isPublicProject, tags} = UseForm();
+    
 
     return(
         <form onSubmit={handleSubmit}>
             <label htmlFor="title">Title</label>
             <input type="text" id="title" value={title} onChange={handleChange} />
-            <label htmlFor="">Discription</label>
+            <label htmlFor="">Public Availability:</label>
+            <input type="checkbox" name="public" id="public" onChange={handlePublic} checked={isPublicProject} />
+            <label htmlFor="">Category</label>
+            <input name="category" id="category" onChange={handleCategory}></input>
+            <label htmlFor="">Status</label>
+            <input name="status" id="status" onChange={handleStatus}></input>
+            <label htmlFor="">Tags</label>
+            <input name="tags" id="tags" value={tags.join(", ")} placeholder="tagnr1, tagnr2, tagnr3" onChange={handleTags}></input>
+            <label htmlFor="">Description</label>
             <textarea name="description" id="description" value={description} onChange={handleChange}></textarea>
             <button type="submit">Create project</button>
         </form>

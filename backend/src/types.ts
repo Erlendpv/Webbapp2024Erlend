@@ -8,9 +8,3 @@ export type ProjectProps = {
     public: boolean;
     tags: string[];
 }
-
-export default function Project({children}: {children: React.ReactNode}){
-    return(
-        <article>{children}</article>
-    )
-}

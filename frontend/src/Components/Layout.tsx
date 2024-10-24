@@ -3,7 +3,7 @@ import Header from "./Header";
 import Contact from "@/Features/Contact/Components/Contact";
 import Empty from "./Empty";
 import Experience from "@/Features/Experiences/Components/Experience";
-import {student} from "@/Configs/Student";
+import {student} from "@/configs/student";
 import { PropsWithChildren } from "react";
 
 export function Layout({children}: PropsWithChildren){

@@ -6,25 +6,33 @@ import { projectsSchema } from '../Helpers/Validate';
 export function useProject() {
     const [projectList, setProjectList] = useState<ProjectProps[]> ([])
 
-    const fetchProjectList = async () => {
-        try{
-            const response = await ProjectsAPI.fetch;
-            const data = await response;
-            console.log(projectsSchema.safeParse(data.projectList))
-            console.log(data)
-            setProjectList(projectsSchema.parse(data.projectList));
-        } catch (e) {
-            console.error(e);
-        }
-    
-    
-    
-}
-useEffect(() => {fetchProjectList()}, []);
 
-const updateProjectList = (prop: {title: string, description: string}) => {
-  const project = {id: crypto.randomUUID(),createdAt: new Date().toISOString(), ...prop};
-    setProjectList((prev) => [...prev, project]);
+useEffect(() => {
+  const fetchProjectList = async () => {
+    try{
+        const response = await ProjectsAPI.fetchProject;
+        const data = await response;
+        console.log(projectsSchema.safeParse(data.projectList))
+        console.log(data)
+        setProjectList(projectsSchema.parse(data.projectList));
+    } catch (e) {
+        console.error(e);
+    }
+}
+  fetchProjectList()}, []);
+
+const updateProjectList = (prop: Partial<ProjectProps>) => {
+  const project: ProjectProps = {
+    id: crypto.randomUUID(),
+    createdAt: new Date().toISOString(),
+    title: prop.title || "",
+    description: prop.description || "",
+    category: prop.category || "Uncategorized",
+    public: prop.public || false,
+     status:prop.status || "",
+      tags:[]
+    };
+    setProjectList(prev => [...prev, project]);
 }
 const deleteProject = (projectId: string) => {
   setProjectList(projectList.filter((project) => project.id !== projectId));

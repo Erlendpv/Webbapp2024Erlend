@@ -1,4 +1,4 @@
-const student : any  = {
+const student = {
     name: 'Erlend Vikan',
     degree: 'forhåpentligvis Bachelor IT',
     points: 180,
