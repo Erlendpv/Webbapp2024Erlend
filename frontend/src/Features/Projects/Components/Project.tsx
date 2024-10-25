@@ -11,6 +11,6 @@ export type ProjectProps = {
 
 export default function Project({children}: {children: React.ReactNode}){
     return(
-        <article>{children}</article>
+        <article id="current-projects">{children}</article>
     )
 }

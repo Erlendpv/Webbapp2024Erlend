@@ -54,12 +54,33 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-#contact-form {
+.contact-form {
   display: flex;
   flex-direction: column;
   gap: 1em;
   max-width: 320px;
   margin: 0 auto;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 50%;
+}
+main{
+  padding-left: 20px;
+}
+
+main article{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 40px;
+  box-shadow: #1a1a1a 0px 0px 15px;
+  margin: 10px;
+  
 }
 
 @media (prefers-color-scheme: light) {

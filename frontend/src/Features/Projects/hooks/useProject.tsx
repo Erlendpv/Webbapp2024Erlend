@@ -11,10 +11,8 @@ useEffect(() => {
   const fetchProjectList = async () => {
     try{
         const response = await ProjectsAPI.fetchProject;
-        const data = await response;
-        console.log(projectsSchema.safeParse(data.projectList))
-        console.log(data)
-        setProjectList(projectsSchema.parse(data.projectList));
+        console.log(response)
+        setProjectList(projectsSchema.parse(response.data));
     } catch (e) {
         console.error(e);
     }
@@ -33,9 +31,11 @@ const updateProjectList = (prop: Partial<ProjectProps>) => {
       tags:[]
     };
     setProjectList(prev => [...prev, project]);
+    ProjectsAPI.addProject(project);
 }
 const deleteProject = (projectId: string) => {
   setProjectList(projectList.filter((project) => project.id !== projectId));
+  ProjectsAPI.removeProject(projectId);
 }
 
 const projectsByCategory = projectList.reduce((totals, project) => {

@@ -6,7 +6,7 @@ export default function CreateProject() {
     
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="create-project">
             <label htmlFor="title">Title</label>
             <input type="text" id="title" value={title} onChange={handleChange} />
             <label htmlFor="">Public Availability:</label>
