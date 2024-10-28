@@ -2,6 +2,7 @@ import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors';
 import { ProjectProps } from './types';
+import { projectService } from './db/sqlQueries/Service';
 
 
 let projectList: ProjectProps[] = [
@@ -111,20 +112,31 @@ const app = new Hono()
 
 app.use("/*", cors());
 
-app.get('/projects', (c) => {
- 
-  return c.json({status: 201, data:projectList})
+app.get('/projects', async (c) => {
+  const data = await projectService.getAllProjectsDb()
+  return c.json({status: 201, data:data})
 })
 app.post('/projects', async (c) => {
-  const newProject: ProjectProps = await c.req.json();
-  projectList.push({...newProject})
-  return c.json({status: 201, message: 'Project added successfully'})
+  const data = await c.req.json() as ProjectProps;
+  const project: ProjectProps = {
+    id: data.id || crypto.randomUUID(),
+    title: data.title || '',
+    description: data.description || '',
+    createdAt: new Date().toISOString() || new Date().toISOString(),
+    category: data.category || '',
+    status: data.status || '',
+    tags: data.tags || [],
+    public: data.public || false
+  }
+  const response = await projectService.createAProjectDb(project)
+  return c.json({status: 201, data: response})
 })
 app.delete('/projects', async (c) => {
   const projectDelete = await c.req.param("id");
   projectList = projectList.filter(project => project.id !== projectDelete)
-  return c.json({status: 201, message: 'Project removed successfully'})
+  return c.json({status: 201, data: projectList})
 })
+app.patch('/projects', async (c) => {})
 
 const port = 3999
 console.log(`Server is running on port ${port}`)

@@ -27,5 +27,4 @@ export const seed = async (db: DB) => {
             );
         }
     })()
-
 }

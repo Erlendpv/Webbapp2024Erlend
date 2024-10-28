@@ -13,7 +13,7 @@ const addProject = async(project: ProjectProps) => {
                 'Content-Type': 'application/json'
             }
         })
-        console.log("Project added successfully");
+        console.log(project);
         console.log(response.message);
     }catch(error){
         console.log("Error adding project");

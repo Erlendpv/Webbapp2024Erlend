@@ -35,10 +35,15 @@ export function UseForm(){
         if(!title || !description){
             return;
         }
-        updateProjectList({title: title, description: description, public: isPublicProject, category: "Uncategorized"});
+        updateProjectList({title: title, description: description, public: isPublicProject, category: category, status: status, tags: tags});
         setTitle("");
         setDescription("");
+        setCategory("");
+        setStatus("");
         setIsPublicProject(false);
+        
+        setTags([]);
+
     }
     return{title, description, isPublicProject, category, status, tags, handleTags, handleStatus, handleCategory, handleChange, handlePublic, handleSubmit}
 
