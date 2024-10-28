@@ -19,3 +19,16 @@ export type DbProjectProps = {
     public: string;
     tags: string;
 }
+export type Sucsess<T> = {
+    success: true,
+    status: number,
+    data: T
+}
+
+export type Result<T> = {
+    | {
+        success: true,
+        status: number,
+        data: T
+    }
+}

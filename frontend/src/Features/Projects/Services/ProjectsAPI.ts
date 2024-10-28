@@ -22,9 +22,8 @@ const addProject = async(project: ProjectProps) => {
 }
 const removeProject = async(project: string) => {
     try{
-        const response = await ofetch(endpoints.projects,{
+        const response = await ofetch(`${endpoints.projects}/${project}`,{
             method: 'DELETE',
-            body: project,
             headers: {
                 'Content-Type': 'application/json'
             }

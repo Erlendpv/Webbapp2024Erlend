@@ -36,10 +36,10 @@ export const projectSQL = (db: DB) =>{
         }
     }
 
-    const deleteAProjectDb = async (project: ProjectProps) =>{
+    const deleteAProjectDb = async (id: string) =>{
         try {
             const query = db.prepare(`delete from projects where id = ?`)
-            query.run(project.id)
+            query.run(id)
         } catch (error) {
             console.log(error);
         }

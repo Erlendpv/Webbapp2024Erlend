@@ -34,8 +34,10 @@ const updateProjectList = (prop: Partial<ProjectProps>) => {
     ProjectsAPI.addProject(project);
 }
 const deleteProject = (projectId: string) => {
-  setProjectList(projectList.filter((project) => project.id !== projectId));
+  setProjectList(prev => prev.filter((project) => project.id !== projectId)
+);
   ProjectsAPI.removeProject(projectId);
+  
 }
 
 const projectsByCategory = projectList.reduce((totals, project) => {

@@ -9,8 +9,8 @@ export const createProjectService = (projectRepo: ProjectRepository) =>{
     const getAProjectDb = async (id: string) =>{
         return projectRepo.getAProjectDb(id)
     }
-    const deleteAProjectDb = async (project: ProjectProps) =>{
-        return projectRepo.deleteAProjectDb(project)
+    const deleteAProjectDb = async (id: string) =>{
+        return projectRepo.deleteAProjectDb(id)
     }
     const updateAProjectDb = async (project: ProjectProps) =>{
         return projectRepo.updateAProjectDb(project)
