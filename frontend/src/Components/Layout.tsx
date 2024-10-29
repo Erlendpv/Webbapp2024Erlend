@@ -11,14 +11,17 @@ export function Layout({children}: PropsWithChildren){
     return (
         <>
       <Header student={student.name} degree={student.degree} points={student.points} />
-      <Experiences>
-        <h2>My experiences</h2>
-        <Empty data={student}>
-          {student.experiences.map((exp:string, index:any) => (
-            <Experience key={index}experience={exp}></Experience>))}
-        </Empty>
-      </Experiences>
-      <Contact email={student.email} />
+      <section id="info-container" >
+          <Experiences>
+          <h2>My experiences</h2>
+          <Empty data={student}>
+            {student.experiences.map((exp:string, index:any) => (
+              <Experience key={index}experience={exp}></Experience>))}
+          </Empty>
+        </Experiences>
+        <Contact email={student.email} />
+      </section>
+      
       {children}
     </>
     )

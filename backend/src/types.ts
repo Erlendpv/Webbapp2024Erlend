@@ -25,10 +25,10 @@ export type Sucsess<T> = {
     data: T
 }
 
-export type Result<T> = {
-    | {
-        success: true,
-        status: number,
-        data: T
-    }
-}
+// export type Result<T> = {
+//      {
+//         success: true,
+//         status: number,
+//         data: T
+//     }
+// }

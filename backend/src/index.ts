@@ -115,7 +115,7 @@ app.use("/*", cors());
 app.get('/projects', async (c) => {
   try {
     const data = await projectService.getAllProjectsDb()
-    return c.json({sucsess: true, status: 201, data:data})
+    return c.json({sucsess: true, status: 201, data:data?.data})
   } catch (error) {
     console.log(error)
     return c.json({sucsess: false, status: 400, message: "internal server error"})
@@ -136,9 +136,10 @@ app.post('/projects', async (c) => {
       public: data.public || false
     }
     const response = await projectService.createAProjectDb(project)
-    return c.json({status: 201, data: response})
+    return c.json({sucsess:true, status: 201, data: response})
   } catch (error) {
-    
+    console.log(error)
+    return c.json({sucsess: false, status: 400, message: "internal server error"})
   }
   
 })
@@ -152,11 +153,12 @@ app.delete('/projects/:id', async (c) => {
     return c.json({status: 400, message: "internal server error", sucsess: false})
   }
 })
-app.patch('/projects/', async (c) => {
+app.patch('/projects/:id', async (c) => {
   try {
-    const data: ProjectProps = await c.req.json();
-    const response = await projectService.updateAProjectDb(data)
-    return c.json({sucsess: true, status: 201, data: response})
+    const id = c.req.param("id");
+    const data: Partial<ProjectProps> = await c.req.json();
+    const response = await projectService.updateAProjectDb(id, data)
+    return c.json({sucsess: true, status: 201, data: response?.data})
     
   } catch (error) {
     console.log(error)

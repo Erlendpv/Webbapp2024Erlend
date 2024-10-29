@@ -24,3 +24,16 @@ export const toDb = (project: ProjectProps): DbProjectProps => {
         tags: JSON.stringify(project.tags)
     }
 }
+
+export const partialToDb = (project: Partial<ProjectProps>): Partial<DbProjectProps> => {
+    return {
+        id: project.id,
+        title: project.title,
+        createdAt: project.createdAt,
+        description: project.description,
+        category: project.category,
+        status: project.status,
+        public: JSON.stringify(project.public),
+        tags: project.tags?.join(",")
+    }
+}

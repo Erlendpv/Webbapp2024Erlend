@@ -1,6 +1,6 @@
 import { DbProjectProps, ProjectProps } from "@/types";
 import { DB } from "../db";
-import { fromDb, toDb } from "./mapper";
+import { fromDb, partialToDb, toDb } from "./mapper";
 import { run } from "node:test";
 
 //CRUD
@@ -45,19 +45,29 @@ export const projectSQL = (db: DB) =>{
         }
     }
 
-    const updateAProjectDb = async (project: ProjectProps) =>{
+    const updateAProjectDb = async (id: string, project: Partial<ProjectProps>) =>{
         try {
-            const query = db.prepare(`update projects set title = ?, createdAt = ?, description = ?, category = ?, status = ?, public = ?, tags = ? where id = ?`)
+            const data = partialToDb(project)
+            const query = db.prepare(`
+                update projects set 
+                title = coalesce(?, title),
+                createdAt = coalesce(?, createdAt),
+                description = coalesce(?, description),
+                category = coalesce(?, category),
+                status = coalesce(?, status),
+                public = coalesce(?, public),
+                tags = coalesce(?, tags)
+                where id = ?`)
             query.run(
-                project.title,
-                project.createdAt,
-                project.description,
-                project.category,
-                project.status,
-                project.public,
-                project.tags,
-                project.id)
-                return "Project updated successfully"
+                data.title,
+                data.createdAt,
+                data.description,
+                data.category,
+                data.status,
+                data.public,
+                data.tags,
+                id)
+                return {sucsess:true, status: 201, data: project}
         } catch (error) {
             console.log(error);
         }
@@ -66,7 +76,7 @@ export const projectSQL = (db: DB) =>{
         try {
             const query = db.prepare(`select * from projects`)
             const response = query.all() as DbProjectProps[];
-            return response.map((project)  => fromDb(project)) as ProjectProps[]
+            return {succses:true, status: 201, data:response.map((project)  => fromDb(project)) as ProjectProps[]}
         } catch (error) {
             console.log(error);
     }

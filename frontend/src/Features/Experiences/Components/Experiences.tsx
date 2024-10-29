@@ -1,5 +1,5 @@
 export default function Experiences({children}: {children: React.ReactNode}){
     return(
-        <>{children}</>
+        <div className="info-items">{children}</div>
     )
 }

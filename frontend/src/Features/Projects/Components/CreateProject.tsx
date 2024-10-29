@@ -7,7 +7,6 @@ export default function CreateProject() {
 
     return(
         <form onSubmit={handleSubmit} id="create-project">
-            <pre>{JSON.stringify(isPublicProject)}</pre>
             <label htmlFor="title">Title</label>
             <input type="text" id="title" value={title} onChange={handleChange} />
             <label htmlFor="">Public Availability:</label>

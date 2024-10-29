@@ -28,9 +28,9 @@ export default function Contact(email : ContactProps){
     }
 
     return(
-        <div id="contact-form">
+        <div className="into-items">
             <h2>Contact me</h2>
-            <button type="button" onClick={() => alert(email)}>Vis epost adresse</button>
+            <button type="button" onClick={() => alert(email)}>Show email address</button>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="">Name</label>
                 <input type="text" id="name" required placeholder="your name" onChange={handleChange} value={name} />

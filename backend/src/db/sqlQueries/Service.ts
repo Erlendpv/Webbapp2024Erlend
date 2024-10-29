@@ -12,8 +12,8 @@ export const createProjectService = (projectRepo: ProjectRepository) =>{
     const deleteAProjectDb = async (id: string) =>{
         return projectRepo.deleteAProjectDb(id)
     }
-    const updateAProjectDb = async (project: ProjectProps) =>{
-        return projectRepo.updateAProjectDb(project)
+    const updateAProjectDb = async (id: string, project: Partial<ProjectProps>) =>{
+        return projectRepo.updateAProjectDb(id, project)
     }
     const getAllProjectsDb = async () =>{
         return projectRepo.getAllProjectsDb()
