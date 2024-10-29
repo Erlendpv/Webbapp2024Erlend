@@ -2,10 +2,11 @@ import { DbProjectProps, ProjectProps } from "@/types";
 import { DB } from "../db";
 import { fromDb, partialToDb, toDb } from "./mapper";
 import { run } from "node:test";
+import { ProjectProps_Zod, UpdateProjectProps } from "./validate";
 
 //CRUD
 export const projectSQL = (db: DB) =>{
-    const createAProjectDb = async (data: ProjectProps)=>{
+    const createAProjectDb = async (data: ProjectProps_Zod)=>{
         try{
         const project = toDb(data)
         const query = db.prepare(`
@@ -45,7 +46,7 @@ export const projectSQL = (db: DB) =>{
         }
     }
 
-    const updateAProjectDb = async (id: string, project: Partial<ProjectProps>) =>{
+    const updateAProjectDb = async (project: UpdateProjectProps) =>{
         try {
             const data = partialToDb(project)
             const query = db.prepare(`
@@ -66,7 +67,7 @@ export const projectSQL = (db: DB) =>{
                 data.status,
                 data.public,
                 data.tags,
-                id)
+                project.id)
                 return {sucsess:true, status: 201, data: project}
         } catch (error) {
             console.log(error);
@@ -76,9 +77,10 @@ export const projectSQL = (db: DB) =>{
         try {
             const query = db.prepare(`select * from projects`)
             const response = query.all() as DbProjectProps[];
-            return {succses:true, status: 201, data:response.map((project)  => fromDb(project)) as ProjectProps[]}
+            return {succses:true, status: 201, data:response.map((project)  => fromDb(project)) as ProjectProps_Zod[]}
         } catch (error) {
             console.log(error);
+            return {succses:false, status: 500, message: "internal server error"}
     }
 }  
      return {

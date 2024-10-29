@@ -3,7 +3,7 @@ export type ProjectProps = {
     title: string;
     createdAt: string;
     description: string;
-    category?: string;
+    category: string;
     status: string;
     public: boolean;
     tags: string[];
@@ -14,7 +14,7 @@ export type DbProjectProps = {
     title: string;
     createdAt: string;
     description: string;
-    category?: string;
+    category: string;
     status: string;
     public: string;
     tags: string;

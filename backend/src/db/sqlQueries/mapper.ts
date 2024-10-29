@@ -1,6 +1,7 @@
 import { DbProjectProps, ProjectProps } from "@/types";
+import { DbProjectProps_Zod, ProjectProps_Zod } from "./validate";
 
-export const fromDb = (dbProject: DbProjectProps): ProjectProps => {
+export const fromDb = (dbProject: DbProjectProps_Zod): ProjectProps_Zod => {
     return {
         id: dbProject.id,
         title: dbProject.title,
@@ -12,7 +13,7 @@ export const fromDb = (dbProject: DbProjectProps): ProjectProps => {
         tags: JSON.parse(dbProject.tags)
     }
 }
-export const toDb = (project: ProjectProps): DbProjectProps => {
+export const toDb = (project: ProjectProps_Zod): DbProjectProps_Zod => {
     return {
         id: project.id,
         title: project.title,

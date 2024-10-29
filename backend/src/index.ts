@@ -158,8 +158,7 @@ app.patch('/projects/:id', async (c) => {
     const id = c.req.param("id");
     const data: Partial<ProjectProps> = await c.req.json();
     const response = await projectService.updateAProjectDb(id, data)
-    return c.json({sucsess: true, status: 201, data: response?.data})
-    
+    return c.json({sucsess: true, status: 201, data:response})
   } catch (error) {
     console.log(error)
     return c.json({status: 400, message: "internal server error", sucsess: false})
