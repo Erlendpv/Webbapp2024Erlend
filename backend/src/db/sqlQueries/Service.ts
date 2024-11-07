@@ -1,7 +1,7 @@
 import { ProjectProps } from "@/types";
 import { ProjectRepository, projectSQL } from "./queries";
 import db from "../db";
-import { UpdateProjectProps, validateCreateProject } from "./validate";
+import { validateCreateProject } from "./validate";
 
 export const createProjectService = (projectRepo: ProjectRepository) =>{
     const createAProjectDb = async (project: ProjectProps) =>{
